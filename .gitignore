@@ -14,11 +14,3 @@ hs_err_pid*
 *.iml
 .classpath
 .project
-
-# Documentación entregada por separado
-docs/
-AGENTS.md
-MEMORY.md
-
-# Configuración local de herramientas
-.opencode/

@@ -75,6 +75,16 @@ StockFlow no contiene contraseñas de MySQL en el código. La conexión se confi
 | `STOCKFLOW_DB_USER` | Usuario MySQL con acceso a `stockflow_db` |
 | `STOCKFLOW_DB_PASSWORD` | Contraseña de ese usuario |
 
+Se puede usar un usuario existente, incluido `root` para una prueba local. Si se prefiere crear el usuario que la aplicación usa por defecto, ejecutar en MySQL y reemplazar `clave_local` por una contraseña propia:
+
+```sql
+CREATE USER IF NOT EXISTS 'stockflow_app'@'localhost' IDENTIFIED BY 'clave_local';
+GRANT SELECT, INSERT, UPDATE, DELETE ON stockflow_db.* TO 'stockflow_app'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+En ese caso, configurar `STOCKFLOW_DB_USER=stockflow_app` y usar la misma contraseña en `STOCKFLOW_DB_PASSWORD`.
+
 Configuración temporal en CMD:
 
 ```bat
