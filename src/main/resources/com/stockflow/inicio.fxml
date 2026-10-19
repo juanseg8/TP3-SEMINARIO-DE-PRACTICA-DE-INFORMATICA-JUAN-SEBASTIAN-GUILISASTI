@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.stockflow.controller.InicioController"
+            stylesheets="@styles.css" styleClass="main-root">
+    <top>
+        <HBox styleClass="header">
+            <HBox spacing="8.0" alignment="CENTER_LEFT">
+                <ImageView fitHeight="60" fitWidth="60" preserveRatio="true"><Image url="@logo.png" /></ImageView>
+                <Label text="STOCKFLOW" styleClass="header-title" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox spacing="15.0" alignment="CENTER">
+                <Button text="Inicio" styleClass="active-nav" onAction="#navInicio" />
+                <Button text="Inventario" styleClass="nav-button" onAction="#navInventario" />
+                <Button text="Recomendaciones" styleClass="nav-button" onAction="#navRecomendaciones" />
+                <Button text="Transferencias" styleClass="nav-button" onAction="#navTransferencias" />
+                <Button text="Salir" styleClass="btn-logout" onAction="#navSalir" />
+            </HBox>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="home-scroll">
+            <VBox spacing="20.0" styleClass="home-content">
+                <HBox spacing="30.0" alignment="CENTER_LEFT" styleClass="hero-card">
+                    <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                        <Label text="CONTROL DE INVENTARIO MULTISUCURSAL" styleClass="hero-eyebrow" />
+                        <Label text="Mové stock donde hace falta." styleClass="hero-title" />
+                        <Label text="Consultá existencias, detectá desequilibrios y administrá transferencias entre sucursales desde un único lugar."
+                               wrapText="true" maxWidth="620" styleClass="hero-description" />
+                        <HBox spacing="10.0">
+                            <Button text="Ver inventario" onAction="#verInventario" styleClass="action-button" />
+                            <Button text="Revisar recomendaciones" onAction="#revisarRecomendaciones" styleClass="secondary-action" />
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="5.0" alignment="CENTER_LEFT" styleClass="welcome-card">
+                        <Label text="SESIÓN ACTIVA" styleClass="detail-eyebrow" />
+                        <Label fx:id="lblBienvenida" text="Bienvenido" wrapText="true" styleClass="welcome-name" />
+                        <Label fx:id="lblRol" text="Rol" wrapText="true" styleClass="welcome-role" />
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="14.0">
+                    <VBox spacing="4.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+                        <Label text="DÉFICIT" styleClass="metric-label" />
+                        <Label fx:id="lblDeficit" text="0" styleClass="metric-value" />
+                        <Label text="inventarios bajo el mínimo" styleClass="metric-caption" />
+                    </VBox>
+                    <VBox spacing="4.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+                        <Label text="SOBRESTOCK" styleClass="metric-label" />
+                        <Label fx:id="lblSobrestock" text="0" styleClass="metric-value" />
+                        <Label text="inventarios sobre el máximo" styleClass="metric-caption" />
+                    </VBox>
+                    <VBox spacing="4.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+                        <Label text="RECOMENDACIONES" styleClass="metric-label" />
+                        <Label fx:id="lblRecomendaciones" text="0" styleClass="metric-value" />
+                        <Label text="decisiones pendientes" styleClass="metric-caption" />
+                    </VBox>
+                    <VBox spacing="4.0" styleClass="metric-card" HBox.hgrow="ALWAYS">
+                        <Label text="EN TRÁNSITO" styleClass="metric-label" />
+                        <Label fx:id="lblTransferencias" text="0" styleClass="metric-value" />
+                        <Label text="traslados en curso" styleClass="metric-caption" />
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="14.0" styleClass="guide-card">
+                    <VBox spacing="3.0">
+                        <Label text="Cómo fluye el stock" styleClass="section-title" />
+                        <Label text="Un recorrido simple para equilibrar la red de sucursales." styleClass="page-subtitle" />
+                    </VBox>
+                    <HBox spacing="10.0" alignment="TOP_CENTER">
+                        <VBox spacing="6.0" styleClass="guide-step" HBox.hgrow="ALWAYS">
+                            <Label text="01" styleClass="step-number" />
+                            <Label text="Consultá" styleClass="step-title" />
+                            <Label text="Filtrá existencias por producto, sucursal o estado." wrapText="true" styleClass="step-text" />
+                        </VBox>
+                        <Label text="→" styleClass="step-arrow" />
+                        <VBox spacing="6.0" styleClass="guide-step" HBox.hgrow="ALWAYS">
+                            <Label text="02" styleClass="step-number" />
+                            <Label text="Analizá" styleClass="step-title" />
+                            <Label text="Revisá oportunidades por déficit y sobrestock." wrapText="true" styleClass="step-text" />
+                        </VBox>
+                        <Label text="→" styleClass="step-arrow" />
+                        <VBox spacing="6.0" styleClass="guide-step" HBox.hgrow="ALWAYS">
+                            <Label text="03" styleClass="step-number" />
+                            <Label text="Transferí" styleClass="step-title" />
+                            <Label text="Aprobá una recomendación e iniciá el traslado." wrapText="true" styleClass="step-text" />
+                        </VBox>
+                        <Label text="→" styleClass="step-arrow" />
+                        <VBox spacing="6.0" styleClass="guide-step" HBox.hgrow="ALWAYS">
+                            <Label text="04" styleClass="step-number" />
+                            <Label text="Confirmá" styleClass="step-title" />
+                            <Label text="Completá la operación y actualizá ambos stocks." wrapText="true" styleClass="step-text" />
+                        </VBox>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="12.0" styleClass="flow-line">
+                        <Label text="SOBRESTOCK" styleClass="flow-node" />
+                        <Label text="──────→" styleClass="flow-arrow" />
+                        <Label text="RECOMENDACIÓN" styleClass="flow-node" />
+                        <Label text="──────→" styleClass="flow-arrow" />
+                        <Label text="DÉFICIT RESUELTO" styleClass="flow-node-resolved" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

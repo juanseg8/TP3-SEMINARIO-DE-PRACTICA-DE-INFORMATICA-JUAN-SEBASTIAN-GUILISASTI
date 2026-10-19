@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stockflow.controller.LoginController" stylesheets="@styles.css" styleClass="login-root">
+    <VBox alignment="CENTER" spacing="10.0" styleClass="login-box" maxWidth="400">
+        <VBox alignment="CENTER" spacing="2.0">
+            <VBox alignment="CENTER" spacing="-5.0">
+                <ImageView fitHeight="130" fitWidth="130" preserveRatio="true">
+                    <Image url="@logo.png" />
+                </ImageView>
+                <Label text="STOCKFLOW" styleClass="login-title"/>
+            </VBox>
+            <Label text="App Administrativa de Inventario" styleClass="login-subtitle"/>
+        </VBox>
+        
+        <VBox spacing="18.0" styleClass="login-form">
+            <VBox spacing="8.0">
+                <Label text="Usuario" />
+                <TextField fx:id="txtUsuario" promptText="Ingrese su usuario..." />
+            </VBox>
+            
+            <VBox spacing="8.0">
+                <Label text="Contraseña" />
+                <PasswordField fx:id="txtPassword" promptText="••••••••" />
+            </VBox>
+            
+            <Label fx:id="lblError" textFill="red" styleClass="error-label" />
+             
+            <Button text="Iniciar Sesión" onAction="#iniciarSesion" maxWidth="Infinity" styleClass="action-button, login-btn" />
+            <Label text="Acceso de evaluación: compras / Compras123!" styleClass="demo-hint" wrapText="true" />
+        </VBox>
+    </VBox>
+</VBox>

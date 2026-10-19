@@ -1,0 +1,24 @@
+# Archivos generados por Maven
+target/
+
+# Configuración local y credenciales
+.env
+.env.*
+*.log
+hs_err_pid*
+
+# Archivos de editores
+.idea/
+.vscode/
+.settings/
+*.iml
+.classpath
+.project
+
+# Documentación entregada por separado
+docs/
+AGENTS.md
+MEMORY.md
+
+# Configuración local de herramientas
+.opencode/

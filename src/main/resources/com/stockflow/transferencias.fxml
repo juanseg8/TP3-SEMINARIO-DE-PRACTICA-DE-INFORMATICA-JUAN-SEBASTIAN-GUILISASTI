@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.stockflow.controller.TransferenciasController"
+            stylesheets="@styles.css" styleClass="main-root">
+    <top>
+        <HBox styleClass="header">
+            <HBox spacing="8.0" alignment="CENTER_LEFT">
+                <ImageView fitHeight="60" fitWidth="60" preserveRatio="true"><Image url="@logo.png" /></ImageView>
+                <Label text="STOCKFLOW" styleClass="header-title" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox spacing="15.0" alignment="CENTER">
+                <Button text="Inicio" styleClass="nav-button" onAction="#navInicio" />
+                <Button text="Inventario" styleClass="nav-button" onAction="#navInventario" />
+                <Button text="Recomendaciones" styleClass="nav-button" onAction="#navRecomendaciones" />
+                <Button text="Transferencias" styleClass="active-nav" onAction="#navTransferencias" />
+                <Button text="Salir" styleClass="btn-logout" onAction="#navSalir" />
+            </HBox>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="18.0" styleClass="content-area" VBox.vgrow="ALWAYS">
+            <VBox spacing="4.0">
+                <Label text="Transferencias internas" styleClass="page-title" />
+                <Label text="Seguimiento del recorrido entre sucursales y actualización atómica del stock." styleClass="page-subtitle" />
+            </VBox>
+            <TableView fx:id="tablaTransferencias" minHeight="150" prefHeight="235" VBox.vgrow="ALWAYS">
+                <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                <columns>
+                    <TableColumn fx:id="colProducto" text="Producto" />
+                    <TableColumn fx:id="colOrigen" text="Origen" />
+                    <TableColumn fx:id="colDestino" text="Destino" />
+                    <TableColumn fx:id="colCantidad" text="Cantidad" />
+                    <TableColumn fx:id="colEstado" text="Estado" />
+                    <TableColumn fx:id="colResponsable" text="Responsable" />
+                </columns>
+            </TableView>
+            <VBox styleClass="detail-card">
+                <VBox fx:id="boxDetalles" spacing="12.0" visible="false" managed="false">
+                    <HBox alignment="CENTER_LEFT" styleClass="detail-header">
+                        <VBox spacing="2.0">
+                            <Label text="Detalle de transferencia" styleClass="detail-title" />
+                            <Label fx:id="lblProductoDetalle" text="Producto" styleClass="detail-product" />
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lblEstado" text="PENDIENTE" styleClass="detail-status" />
+                    </HBox>
+                    <HBox spacing="18.0" alignment="TOP_LEFT" styleClass="detail-content">
+                        <VBox spacing="7.0" styleClass="detail-section" HBox.hgrow="ALWAYS">
+                            <Label text="ORIGEN" styleClass="detail-eyebrow" />
+                            <Label fx:id="lblOrigen" text="Sucursal" styleClass="detail-highlight" />
+                            <Label text="Punto de salida del producto" wrapText="true" styleClass="detail-label" />
+                        </VBox>
+                        <VBox spacing="7.0" styleClass="detail-section" HBox.hgrow="ALWAYS">
+                            <Label text="DESTINO" styleClass="detail-eyebrow" />
+                            <Label fx:id="lblDestino" text="Sucursal" styleClass="detail-highlight" />
+                            <Label text="Sucursal que recibirá el stock" wrapText="true" styleClass="detail-label" />
+                        </VBox>
+                        <VBox spacing="7.0" styleClass="detail-section" HBox.hgrow="ALWAYS">
+                            <Label text="OPERACIÓN" styleClass="detail-eyebrow" />
+                            <Label fx:id="lblCantidad" text="0 unidades" styleClass="detail-highlight" />
+                            <HBox spacing="5.0"><Label text="Responsable" styleClass="detail-label" /><Region HBox.hgrow="ALWAYS" /><Label fx:id="lblResponsable" text="—" styleClass="detail-value" /></HBox>
+                        </VBox>
+                    </HBox>
+                    <HBox alignment="CENTER_RIGHT" styleClass="detail-footer">
+                        <Region HBox.hgrow="ALWAYS" />
+                        <HBox spacing="10.0" alignment="CENTER_RIGHT" styleClass="detail-actions">
+                            <Button fx:id="btnCancelar" text="Cancelar" onAction="#cancelar" styleClass="btn-reject" />
+                            <Button fx:id="btnIniciar" text="Iniciar traslado" onAction="#iniciar" styleClass="secondary-action" />
+                            <Button fx:id="btnCompletar" text="Completar" onAction="#completar" styleClass="action-button" />
+                        </HBox>
+                    </HBox>
+                </VBox>
+                <Label fx:id="lblPlaceholder" text="Seleccioná una transferencia para consultar su recorrido y acciones disponibles."
+                       wrapText="true" styleClass="detail-empty" />
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
